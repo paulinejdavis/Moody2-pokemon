@@ -18,7 +18,7 @@ APIs by sending and processing HTTP requests seamlessly.
 
 
 ## How it works: 
-Check in browser
+### **Check in browser**
 
 ``
 http://localhost:8080/pokemon/names
@@ -40,34 +40,6 @@ http://localhost:8080/pokemon/names
 ```
 ### **Running in Postman**:
 
-```agsl 
-GET http://localhost:8080/api/pokemon/local
-
-```
-
-```agsl
-POST http://localhost:8080/api/pokemon
-
-Body 
-
-{
-  "name": "Pikachu"
-}
-```
-
-check
-
-```agsl
-GET http://localhost:8080/api/pokemon/local
-
-```
-
-delete
-
-```
-DELETE http://localhost:8080/api/pokemon/Pikachu
-```
-
 #### Summary of Postman Requests:
 ```
 
@@ -82,15 +54,20 @@ Check After Deletion: GET http://localhost:8080/api/pokemon/local
 
 ```
 
-#### Next steps:
+#### Next steps - improvements:
 
-Error handling `404 not found or 400 bad request` - using response entity
+ResponseEntity - for consistency in responses and error handling `404 not found or 400 bad request` - 
+using response entity `https://www.baeldung.com/spring-response-entity`
+ResponseEntity - for consistency in responses
 
-Validation `PokemonName` ensure data is valid prior to processing 
+Testing validation `PokemonName` ensure data is valid prior to processing 
+`https://www.baeldung.com/spring-boot-bean-validation`
 
-ResponseEntity - for consistency in responses 
+Extend the Pokemon Entity - skill level `https://spring.io/guides/tutorials/rest/`
+
+Update local storage to accommodate skill level `https://spring.io/guides/tutorials/rest/`
 
 Test Coverage - tests for endpoints covering successful operations, missing Pokémon and 
-invalid input
+invalid input baeldung.com/spring-boot-testing
 
-Swagger/Open API documentation - visual interface to test endpoints
+
