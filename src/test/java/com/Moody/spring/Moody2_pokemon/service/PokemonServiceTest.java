@@ -1,5 +1,6 @@
 package com.Moody.spring.Moody2_pokemon.service;
 
+import com.Moody.spring.Moody2_pokemon.model.PokemonName;
 import org.junit.jupiter.api.Test;
 import org.springframework.web.client.RestTemplate;
 
@@ -14,10 +15,10 @@ class PokemonServiceTest {
     void fetchPokemonNames_shouldReturnListOfPokemonNames() {
         RestTemplate restTemplate = new RestTemplate();
         PokemonService pokemonService = new PokemonService(restTemplate);
-        List<String> pokemonNames = pokemonService.fetchPokemonNames();
+        List<PokemonName> pokemonNames = pokemonService.fetchPokemonNames(10);
 
         assertNotNull(pokemonNames);
         assertTrue(pokemonNames.size() > 0);
-        assertTrue(pokemonNames.contains("bulbasaur"));
+        assertTrue(pokemonNames.stream().anyMatch(name -> name.getName().equals("bulbasaur")));
     }
 }

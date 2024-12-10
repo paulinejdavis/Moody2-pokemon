@@ -1,5 +1,6 @@
 package com.Moody.spring.Moody2_pokemon.controller;
 
+import com.Moody.spring.Moody2_pokemon.model.PokemonName;
 import com.Moody.spring.Moody2_pokemon.service.PokemonService;
 import org.junit.jupiter.api.Test;
 
@@ -12,16 +13,30 @@ class PokemonControllerUnitTest {
 
     @Test
     void getPokemonNames_shouldReturnListOfPokemonNames() {
-        // Create a real instance of the service with inline test data
+        // Mock the PokemonService with inline test data
         PokemonService pokemonService = new PokemonService(null) {
             @Override
-            public List<String> fetchPokemonNames() {
-                return Arrays.asList("bulbasaur", "charmander", "squirtle");
+            public List<PokemonName> fetchPokemonNames(int limit) {
+                return Arrays.asList(
+                        new PokemonName("bulbasaur"),
+                        new PokemonName("charmander"),
+                        new PokemonName("squirtle")
+                );
             }
         };
 
+        // Create an instance of the controller
         PokemonController pokemonController = new PokemonController(pokemonService);
-        List<String> result = pokemonController.getPokemonNames();
-        assertEquals(Arrays.asList("bulbasaur", "charmander", "squirtle"), result);
+
+        // Call the method and assert the results
+        List<PokemonName> result = pokemonController.getPokemonNames(10);
+        assertEquals(
+                Arrays.asList(
+                        new PokemonName("bulbasaur"),
+                        new PokemonName("charmander"),
+                        new PokemonName("squirtle")
+                ),
+                result
+        );
     }
 }

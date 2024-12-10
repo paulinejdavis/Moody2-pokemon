@@ -1,12 +1,14 @@
 package com.Moody.spring.Moody2_pokemon.controller;
 
+import com.Moody.spring.Moody2_pokemon.model.PokemonName;
 import com.Moody.spring.Moody2_pokemon.service.PokemonService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+
+import java.util.Collection;
 import java.util.List;
-
 @RestController
+@RequestMapping("/api/pokemon")
 public class PokemonController {
     private final PokemonService pokemonService;
 
@@ -14,8 +16,37 @@ public class PokemonController {
         this.pokemonService = pokemonService;
     }
 
-    @GetMapping("/pokemon/names")
-    public List<String> getPokemonNames() {
-        return pokemonService.fetchPokemonNames();
+    // Create (Add) Pokémon
+    @PostMapping
+    public String addPokemon(@RequestBody PokemonName pokemonName) {
+        return pokemonService.addPokemon(pokemonName);
+    }
+
+    // Read All Pokémon in Local Storage
+    @GetMapping("/local")
+    public Collection<PokemonName> getAllLocalPokemon() {
+        return pokemonService.getAllLocalPokemon();
+    }
+
+    // Update Pokémon
+    @PutMapping("/{name}")
+    public String updatePokemon(@PathVariable String name, @RequestBody PokemonName updatedPokemon) {
+        return pokemonService.updatePokemon(name, updatedPokemon);
+    }
+
+    // Delete Pokémon
+    @DeleteMapping("/{name}")
+    public String deletePokemon(@PathVariable String name) {
+        return pokemonService.deletePokemon(name);
+    }
+
+    // Fetch Pokémon names from external API
+    @GetMapping("/names")
+    public List<PokemonName> getPokemonNames(@RequestParam(defaultValue = "10") int limit) {
+        if (limit <= 0) {
+            throw new IllegalArgumentException("Limit must be greater than 0");
+        }
+
+        return pokemonService.fetchPokemonNames(limit);
     }
 }
