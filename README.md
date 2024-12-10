@@ -2,6 +2,9 @@
 
 <img width="90" alt="arrow" src="https://user-images.githubusercontent.com/19231569/213458967-d77d1ede-cbb8-4cda-8d58-7ac2a1c70503.png">
 
+![pokeapi](https://github.com/user-attachments/assets/ac7ca92b-a4db-437f-b42c-a07c885872e7)
+
+
 ## Summary
 
 A backend basic REST API skeleton in Java using Spring Boot provides endpoints (e.g., GET, POST, PUT, DELETE) 
