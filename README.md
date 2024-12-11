@@ -7,22 +7,32 @@
 
 ## Summary
 
-A backend basic REST API skeleton in Java using Spring Boot provides endpoints (e.g., GET, POST, PUT, DELETE) 
-to manage Pokémon data locally while leveraging the PokéAPI to fetch additional details, such as Pokémon types 
-and stats. Using Moody entities, the application can extend functionality to calculate and track Pokémon names, 
-skills  dynamically, integrating business logic to enhance local data with attributes like skill levels and 
-mood-based performance metrics.
+This project provides a basic `REST API` skeleton built using `Java` and `Spring Boot`. It integrates with the 
+`PokéAPI` provides to fetch detailed Pokémon data such as types and stats. Locally, the application begins with a 
+static dataset
+containing only Pokemon names. The plan is to enhance the skeleton by introducing a risk/skills
+assessment mechanism to calculate and track Pokemon characters attributes dynamically, such as skill levels and 
+performance metrics. 
 
-An HTTP client library, such as `RestTemplate` or `WebClient`, allows the application to communicate with external 
-APIs by sending and processing HTTP requests seamlessly.
+To facilitate communications with external APIs, the project uses  HTTP client libraries like `RestTemplate` or 
+`WebClient`, enabling processing of API requests (e.g., GET, POST, PUT, DELETE) 
+
 
 
 ## How it works: 
 ### **Check in browser**
 
-``
+```
+http://localhost:8080
+```
+
+```
+http://localhost:8080/actuator/health
+```
+
+```
 http://localhost:8080/pokemon/names
-``
+```
 
 
 ### **Running in Curl**:
@@ -69,5 +79,11 @@ Update local storage to accommodate skill level `https://spring.io/guides/tutori
 
 Test Coverage - tests for endpoints covering successful operations, missing Pokémon and 
 invalid input baeldung.com/spring-boot-testing
+
+### Useful commands
+
+to check what servers are running `lsof -i :8080`
+
+to kill a server `kill -9 {PID NUMBER}`
 
 
