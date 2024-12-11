@@ -48,6 +48,10 @@ http://localhost:8080/pokemon/names
 ```
  curl -X DELETE "http://localhost:8080/api/pokemon/Pikachu"
 ```
+
+```
+curl -X GET "http://localhost:8080/api/pokemon/names?limit=10" -H "Content-Type: application/json"
+```
 ### **Running in Postman**:
 
 #### Summary of Postman Requests:

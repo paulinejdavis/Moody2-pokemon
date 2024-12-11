@@ -13,7 +13,7 @@ class PokemonControllerUnitTest {
 
     @Test
     void getPokemonNames_shouldReturnListOfPokemonNames() {
-        // Mock the PokemonService with inline test data
+        // Mock the PokemonService with hardcoded names
         PokemonService pokemonService = new PokemonService(null) {
             @Override
             public List<PokemonName> fetchPokemonNames(int limit) {
@@ -25,10 +25,8 @@ class PokemonControllerUnitTest {
             }
         };
 
-        // Create an instance of the controller
         PokemonController pokemonController = new PokemonController(pokemonService);
 
-        // Call the method and assert the results
         List<PokemonName> result = pokemonController.getPokemonNames(10);
         assertEquals(
                 Arrays.asList(

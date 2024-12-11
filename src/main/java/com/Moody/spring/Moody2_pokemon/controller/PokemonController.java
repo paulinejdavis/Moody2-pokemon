@@ -16,31 +16,27 @@ public class PokemonController {
         this.pokemonService = pokemonService;
     }
 
-    // Create (Add) Pokémon
     @PostMapping
     public String addPokemon(@RequestBody PokemonName pokemonName) {
         return pokemonService.addPokemon(pokemonName);
     }
 
-    // Read All Pokémon in Local Storage
     @GetMapping("/local")
     public Collection<PokemonName> getAllLocalPokemon() {
         return pokemonService.getAllLocalPokemon();
     }
 
-    // Update Pokémon
     @PutMapping("/{name}")
     public String updatePokemon(@PathVariable String name, @RequestBody PokemonName updatedPokemon) {
         return pokemonService.updatePokemon(name, updatedPokemon);
     }
 
-    // Delete Pokémon
     @DeleteMapping("/{name}")
     public String deletePokemon(@PathVariable String name) {
         return pokemonService.deletePokemon(name);
     }
 
-    // Fetch Pokémon names from external API
+    // Fetches names from Poke API
     @GetMapping("/names")
     public List<PokemonName> getPokemonNames(@RequestParam(defaultValue = "10") int limit) {
         if (limit <= 0) {
